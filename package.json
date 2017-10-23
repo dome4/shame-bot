@@ -1,0 +1,22 @@
+{
+  "name": "shame_bot",
+  "version": "0.0.1",
+  "description": "Shame Bot that answers cancellation requests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dome4/shame-bot.git"
+  },
+  "author": "Dominic Seitz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dome4/shame-bot/issues"
+  },
+  "homepage": "https://github.com/dome4/shame-bot#readme",
+  "dependencies": {
+    "@slack/client": "^3.14.1"
+  }
+}
