@@ -11,7 +11,8 @@ rtm.start();
  */
 rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     if (message.text.length >= 10) {
-        rtm.sendMessage("Hello <@" + message.user + ">!", message.channel);
+        rtm.sendMessage(
+            "Shame on you, <@" + message.user + ">!" , message.channel);
     }
     console.log(message);
 });
