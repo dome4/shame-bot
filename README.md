@@ -10,3 +10,6 @@ $ npm install @slack/client --save
 $ node bot.js
 ```
 5. Invite your brand new bot into the channels you'd like it to watch.
+
+## Example
+![Shame Bot Example](./shame_bot.png)
