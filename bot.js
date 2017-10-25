@@ -16,7 +16,9 @@ rtm.start();
  handle every message which has more than 10 characters and reply on the same channel
  */
 rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
-    if (message.text.length >= 10 && message.subtype != 'bot_message') {
+    if (message.text.length >= 10 && !message.bot_id) {
+
+        console.log(message.user);
 
         /**
          * sending message
@@ -34,7 +36,7 @@ rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
         ];
 
         // send response
-        web.chat.postMessage(channel, text, { attachments: attachment }, function(err, res) {
+        web.chat.postMessage(channel, text, { attachments: attachment, as_user: true }, function(err, res) {
             if (err) {
                 console.log('Error:', err);
             } else {
