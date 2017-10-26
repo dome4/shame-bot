@@ -2,10 +2,16 @@
   "name": "shame_bot",
   "version": "0.0.1",
   "description": "Shame Bot that answers cancellation requests.",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
   },
+  "keywords": [
+    "shame_bot",
+    "shame",
+    "prog1"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dome4/shame-bot.git"
@@ -18,5 +24,9 @@
   "homepage": "https://github.com/dome4/shame-bot#readme",
   "dependencies": {
     "@slack/client": "^3.14.1"
+  },
+  "engines": {
+    "node": "6.11.5",
+    "npm": "3.10.10"
   }
 }
