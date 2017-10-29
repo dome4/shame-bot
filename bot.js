@@ -1,13 +1,11 @@
-var config = require('./config.js');
-
 // Slack RTM API
 var RtmClient = require('@slack/client').RtmClient;
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
-var rtm = new RtmClient(config.bot_token);
+var rtm = new RtmClient(process.env.BOT_TOKEN);
 
 // Slack Web API
 var WebClient = require('@slack/client').WebClient;
-var web = new WebClient(config.bot_token);
+var web = new WebClient(process.env.BOT_TOKEN);
 
 // start listening
 rtm.start();
