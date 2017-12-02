@@ -20,14 +20,10 @@ $ git push heroku master
 3. Set variable on Heroku: 
 ```sh
 $ BOT_TOKEN='xoxb-test'
+$ APP_PATH='url-of-heroku-app'
 ```
 4. Invite your brand new bot into the channels you'd like it to watch.
-5. Scale dynos:
-```sh
-$ heroku ps:scale worker=1
-$ heroku ps:scale web=0
-```
-6. Check the result:
+5. Check the result:
 ```sh
 $ heroku ps
 ```

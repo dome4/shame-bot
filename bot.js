@@ -1,3 +1,7 @@
+const http = require('http')
+const request = require('request')
+
+
 // Slack RTM API
 var RtmClient = require('@slack/client').RtmClient;
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
@@ -46,4 +50,15 @@ rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     console.log(message);
 });
 
+// server
+rtm.on(RTM_EVENTS.OPEN, function(){
+    var repRequest = request(process.env.APP_PATH, function (error, response, body) {});
+    setInterval(repRequest, 25*60*1000);
+    console.log('I am up again!');
+});
+
+http.createServer(function (request, response) {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end(index);
+}).listen(process.env.PORT || 5000);
 
