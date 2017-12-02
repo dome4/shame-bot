@@ -26,8 +26,6 @@ rtm.start();
 rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     if (message.text.length >= 10 && !message.bot_id) {
 
-        console.log(message.user);
-
         /**
          * sending message
          */
@@ -56,17 +54,15 @@ rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     console.log(message);
 });
 
-// request server
-rtm.on(RTM_EVENTS.OPEN, function(){
-    var repRequest = request(process.env.APP_PATH || 'localhost', function (error, response, body) {
+// request server every 25 minutes
+function repRequest()
+{
+    request(process.env.APP_PATH || 'localhost', function (error, response, body) {
         console.log('error:', error); // Print the error if one occurred
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         console.log('body:', body); // Print the HTML for the Google homepage.
     });
-    // setInterval(repRequest, 25*60*1000); // send a request every 25 minutes
-    setInterval(repRequest, 60*1000); // send a request every minute
-    console.log('I am up again!');
-});
+}
 
-
-
+setInterval(repRequest, 25*60*1000);
+console.log('I am up again!');
