@@ -1,6 +1,5 @@
-const http = require('http')
 const request = require('request')
-
+const http = require('http')
 
 // Slack RTM API
 var RtmClient = require('@slack/client').RtmClient;
@@ -10,6 +9,13 @@ var rtm = new RtmClient(process.env.BOT_TOKEN);
 // Slack Web API
 var WebClient = require('@slack/client').WebClient;
 var web = new WebClient(process.env.BOT_TOKEN);
+
+// create server
+http.createServer(function (request, response) {
+    console.log ('request received');
+    response.write('ShameBot is working!');
+    response.end();
+}).listen(process.env.PORT || 8080);
 
 // start listening
 rtm.start();
@@ -50,15 +56,17 @@ rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     console.log(message);
 });
 
-// server
+// request server
 rtm.on(RTM_EVENTS.OPEN, function(){
-    var repRequest = request(process.env.APP_PATH, function (error, response, body) {});
-    setInterval(repRequest, 25*60*1000);
+    var repRequest = request(process.env.APP_PATH || 'localhost', function (error, response, body) {
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); // Print the HTML for the Google homepage.
+    });
+    // setInterval(repRequest, 25*60*1000); // send a request every 25 minutes
+    setInterval(repRequest, 60*1000); // send a request every minute
     console.log('I am up again!');
 });
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end(index);
-}).listen(process.env.PORT || 5000);
+
 
